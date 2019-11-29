@@ -1,0 +1,14 @@
+.vertical-align-content > *
+{
+    flex: 1;
+    display: flex!important;
+     align-content: center!important;
+     align-items: center!important;
+}
+
+.titulo {
+    font-weight: 800;
+    font-family: "Open Sans";
+    font-size: 48px;
+    color: #E91D29;
+}
