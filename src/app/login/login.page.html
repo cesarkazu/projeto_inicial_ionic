@@ -4,11 +4,17 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content text-center class="vertical-align-content">
-    <ion-text>
-        <span class="titulo">Flow</span>
-      </ion-text>
-  <ion-input placeholder="Email"></ion-input>
-  <ion-input placeholder="Password"></ion-input>
-  <ion-button expand="full" color="secondary">SIGN IN</ion-button>
+<ion-content>
+  <ion-grid style="height: 100%">
+    <ion-row justify-content-center align-items-center style="height: 100%">
+        <ion-grid>
+          <ion-row justify-content-center><ion-text>
+              <span class="titulo">Flow</span>
+            </ion-text></ion-row>
+          <ion-row><ion-input placeholder="Email"></ion-input></ion-row>
+          <ion-row><ion-input placeholder="Password"></ion-input></ion-row>
+          <ion-row><ion-button expand="full" color="secondary">SIGN IN</ion-button></ion-row>
+        </ion-grid>
+    </ion-row>
+  </ion-grid>
 </ion-content>
