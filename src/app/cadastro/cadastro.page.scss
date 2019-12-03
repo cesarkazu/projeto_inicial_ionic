@@ -1,23 +1,15 @@
 ion-content{
   --ion-background-color:#F1F5F6;
-  display: flex !important;
-  flex-direction: column !important;
-  height: 100%;
+  --ion-grid-padding: 10px;
 }
 
-.grid-formulario {
-  flex: auto !important;
-  vertical-align: middle !important;
-}
-
-.grid-termo {
-  flex: initial !important;
-  vertical-align: middle !important;
-}
-
-.grid-inferior {
-  flex: initial !important;
-  align-items: end !important;
+.header {
+  color: #8b999f;
+  font-family: "Open Sans";
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 23px;
+  text-align: center;
 }
 
 ion-input{
@@ -39,16 +31,7 @@ ion-button{
   text-align: center;
 }
 
-.titulo {
-  color: #8b999f;
-  font-family: "Open Sans";
-  font-size: 17px;
-  font-weight: 600;
-  line-height: 23px;
-  text-align: center;
-}
-
-.texto {
+.termo {
     color: #8b999f;
     font-family: "Open Sans";
     font-size: 14px;
@@ -57,7 +40,7 @@ ion-button{
     text-align: center;
 }
 
-.link {
+.login {
     color: #8b999f;
     font-family: "Open Sans";
     font-size: 16px;

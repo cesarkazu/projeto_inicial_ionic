@@ -1,19 +1,40 @@
 <ion-content>
   <ion-grid style="height: 100%">
-    <ion-row justify-content-center align-items-center style="height: 100%">
+    <ion-row class="ion-align-items-center ion-justify-content-center" style="height:30%">
       <span class="titulo">Flow</span>
     </ion-row>
-    <ion-row justify-content-center align-items-center style="height: 100%">
-      <ion-input placeholder="Email"></ion-input>
+    <ion-row class="ion-align-items-start ion-justify-content-center" style="height:50%">
+      <ion-grid>
+        <form [formGroup]="formulario" (ngSubmit)="autenticar()">
+          <ion-row><ion-col size="12">
+            <ion-input
+              type="email"
+              placeholder="Email"
+              formControlName="email"
+            ></ion-input>
+          </ion-col></ion-row>
+          <ion-row><ion-col size="12">
+            <ion-input
+              type="password"
+              placeholder="Password"
+              formControlName="senha"
+            ></ion-input>
+          </ion-col></ion-row>
+          <ion-row><ion-col size="12">
+            <ion-button
+              type="submit"
+              expand="full"
+              fill="clear"
+            >SIGN IN</ion-button>
+          </ion-col></ion-row>
+        </form>
+        <ion-row class="ion-justify-content-center">
+          <a class="recuperar-senha" routerLink="/">Forgot Password?</a>
+        </ion-row>
+      </ion-grid>
     </ion-row>
-    <ion-row justify-content-center align-items-center style="height: 100%">
-      <ion-input placeholder="Password"></ion-input>
-    </ion-row>
-    <ion-row justify-content-center align-items-center style="height: 100%">
-      <ion-button expand="full" color="secondary">SIGN IN</ion-button>
-    </ion-row>
-    <ion-row justify-content-center align-items-center style="height: 100%">
-      <a class="link" routerLink="/cadastro">Dont't have an account?</a>
+    <ion-row class="ion-align-items-end ion-justify-content-center" style="height:15%">
+      <a class="cadastro" routerLink="/cadastro">Don't have an account?</a>
     </ion-row>
   </ion-grid>
 </ion-content>
