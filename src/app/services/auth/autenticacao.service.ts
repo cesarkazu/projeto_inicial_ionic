@@ -60,7 +60,7 @@ export class Autenticacao{
 
     async presentAlertConfirm(header:string, message: string) {
         const alert = await this.alertController.create({
-          header: header,
+          header: header.toUpperCase(),
           message: message,
           buttons: [
             {

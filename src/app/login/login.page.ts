@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms'
 import { AlertController } from '@ionic/angular';
 
@@ -10,7 +10,7 @@ import { Autenticacao } from '../services/auth/autenticacao.service';
   styleUrls: ['./login.page.scss'],
   providers: [ Autenticacao ]
 })
-export class LoginPage implements OnInit {
+export class LoginPage implements OnInit, OnDestroy {
 
   public formulario: FormGroup = new FormGroup({
     'email': new FormControl(null),
@@ -23,6 +23,10 @@ export class LoginPage implements OnInit {
   ) { }
 
   ngOnInit() {}
+
+  ngOnDestroy() {
+    this.formulario.reset()
+  }
 
   public autenticar(): void{
     this.autenticacao.autenticar(

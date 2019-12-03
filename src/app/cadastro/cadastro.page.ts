@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms'
 import { Router } from '@angular/router';
 
@@ -27,6 +27,10 @@ export class CadastroPage implements OnInit {
   ) { }
 
   ngOnInit() {}
+
+  OnDestroy() {
+    this.formulario.reset()
+  }
   
   public cadastrarUsuario(): void {
     //console.log(this.formulario)
