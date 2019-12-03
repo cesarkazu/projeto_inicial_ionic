@@ -29,9 +29,12 @@ export class LoginPage implements OnInit, OnDestroy {
   }
 
   public autenticar(): void{
-    this.autenticacao.autenticar(
-      this.formulario.value.email,
-      this.formulario.value.senha
-    )
+    if(this.formulario.value.email
+      && this.formulario.value.senha){
+        this.autenticacao.autenticar(
+          this.formulario.value.email,
+          this.formulario.value.senha
+        )
+      }
   }
 }

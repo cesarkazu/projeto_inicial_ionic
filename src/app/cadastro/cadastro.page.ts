@@ -33,14 +33,18 @@ export class CadastroPage implements OnInit {
   }
   
   public cadastrarUsuario(): void {
-    //console.log(this.formulario)
+    if(this.formulario.value.nome
+      && this.formulario.value.email
+      && this.formulario.value.senha){
+      //console.log(this.formulario)
 
-    let usuario: Usuario = new Usuario(
-      this.formulario.value.nome,
-      this.formulario.value.email,
-      this.formulario.value.senha
-    )
+      let usuario: Usuario = new Usuario(
+        this.formulario.value.nome,
+        this.formulario.value.email,
+        this.formulario.value.senha
+      )
 
-    this.autenticacao.cadastrarUsuario(usuario)
+      this.autenticacao.cadastrarUsuario(usuario)
+    }
   }
 }
