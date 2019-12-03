@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms'
+import { AlertController } from '@ionic/angular';
 
 import { Autenticacao } from '../services/auth/autenticacao.service';
 
@@ -17,11 +18,11 @@ export class LoginPage implements OnInit {
   })
 
   constructor(
-    private autenticacao: Autenticacao
+    private autenticacao: Autenticacao,
+    public alertController: AlertController
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   public autenticar(): void{
     this.autenticacao.autenticar(

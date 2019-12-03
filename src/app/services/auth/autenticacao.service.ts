@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Usuario } from '../../model/usuario.model';
+import { AlertController } from '@ionic/angular';
+
 import * as firebase from "firebase/app";
 
 import "firebase/auth";
 import "firebase/database";
+
+import { Usuario } from '../../model/usuario.model';
 
 @Injectable()
 export class Autenticacao{
@@ -12,7 +15,8 @@ export class Autenticacao{
     public token_id: string
 
     constructor(
-        private router: Router
+        private router: Router,
+        public alertController: AlertController
     ){}
 
     public cadastrarUsuario(usuario: Usuario): Promise<any>{
@@ -30,10 +34,11 @@ export class Autenticacao{
                 //registrando dados complementares do usuário no path email na base64
                 firebase.database().ref(`usuario_detalhe/${btoa(usuario.email)}`)
                     .set({ usuario })
-
+                this.router.navigate(['/login'])
             })
             .catch((erro: Error) => {
-                console.log(erro)
+                this.presentAlertConfirm(erro['code'], erro['message']);
+                //console.log(erro)
             })
     }
 
@@ -48,9 +53,27 @@ export class Autenticacao{
                 })
         })
         .catch((erro: Error) => {
-            console.log(erro)
+            this.presentAlertConfirm(erro['code'], erro['message']);
+            //console.log(erro);
         })
     }
+
+    async presentAlertConfirm(header:string, message: string) {
+        const alert = await this.alertController.create({
+          header: header,
+          message: message,
+          buttons: [
+            {
+              text: 'Try again',
+              handler: () => {
+                //console.log('Confirm Okay');
+              }
+            }
+          ]
+        });
+    
+        await alert.present();
+      }
 
     public autenticado(): boolean{
         if(this.token_id === undefined

@@ -38,6 +38,5 @@ export class CadastroPage implements OnInit {
     )
 
     this.autenticacao.cadastrarUsuario(usuario)
-      .then(() => this.router.navigate(['/login']))
   }
 }
