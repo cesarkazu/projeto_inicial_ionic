@@ -9,10 +9,9 @@ import { Autenticacao } from '../services/auth/autenticacao.service'
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.page.html',
-  styleUrls: ['./cadastro.page.scss'],
-  providers: [ Autenticacao ]
+  styleUrls: ['./cadastro.page.scss']
 })
-export class CadastroPage implements OnInit {
+export class CadastroPage implements OnInit, OnDestroy {
 
   public formulario: FormGroup = new FormGroup({
     nome: new FormControl(null),
@@ -28,22 +27,22 @@ export class CadastroPage implements OnInit {
 
   ngOnInit() {}
 
-  OnDestroy() {
+  ngOnDestroy() {
     this.formulario.reset()
   }
   
   public cadastrarUsuario(): void {
+    //console.log(this.formulario)
     if(this.formulario.value.nome
       && this.formulario.value.email
-      && this.formulario.value.senha){
-      //console.log(this.formulario)
+      && this.formulario.value.senha
+      && this.formulario.value.csenha){
 
       let usuario: Usuario = new Usuario(
         this.formulario.value.nome,
         this.formulario.value.email,
         this.formulario.value.senha
       )
-
       this.autenticacao.cadastrarUsuario(usuario)
     }
   }

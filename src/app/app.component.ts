@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import * as firebase from "firebase/app";
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+
+import { Autenticacao } from './services/auth/autenticacao.service'
 
 @Component({
   selector: 'app-root',
@@ -17,11 +20,11 @@ export class AppComponent implements OnInit {
       url: '/home',
       icon: 'home'
     },
-    {
+    /* {
       title: 'List',
       url: '/list',
       icon: 'list'
-    },
+    }, */
     {
       title: 'Login',
       url: '/login',
@@ -37,7 +40,8 @@ export class AppComponent implements OnInit {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private autenticacao: Autenticacao
   ) {
     this.initializeApp();
   }
@@ -49,7 +53,13 @@ export class AppComponent implements OnInit {
     });
   }
 
+  private subscription: Subscription
+
   ngOnInit(): void{
+    this.subscription = this.autenticacao.subject
+      .subscribe((res) => {
+        console.log('logou/deslogou',this.autenticacao.autenticado())
+      })
 
     var firebaseConfig = {
       apiKey: "AIzaSyAk12MhdPHNcvwi6pTzc0_aaH-38kjdIG4",

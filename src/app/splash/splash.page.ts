@@ -14,7 +14,7 @@ export class SplashPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    const numbers = timer(2000);
+    const numbers = timer(1000);
     numbers.subscribe(x => this.router.navigate(['/login']));
   }
 }

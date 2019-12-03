@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { Subject } from 'rxjs';
 
 import * as firebase from "firebase/app";
 
@@ -13,6 +14,10 @@ import { Usuario } from '../../model/usuario.model';
 export class Autenticacao{
 
     public token_id: string
+
+    logado: boolean = false
+
+    subject = new Subject<Object>();
 
     constructor(
         private router: Router,
@@ -49,6 +54,7 @@ export class Autenticacao{
                 .then((idToken: string) => {
                     this.token_id = idToken
                     localStorage.setItem('idToken', idToken)
+                    this.subject.next()
                     this.router.navigate(['/home'])
                 })
         })
@@ -94,6 +100,7 @@ export class Autenticacao{
             .then(() => {
                 localStorage.removeItem('idToken')
                 this.token_id = undefined
+                this.subject.next()
                 this.router.navigate(['/'])
             })
     }

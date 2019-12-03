@@ -7,8 +7,7 @@ import { Autenticacao } from '../services/auth/autenticacao.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
-  providers: [ Autenticacao ]
+  styleUrls: ['./login.page.scss']
 })
 export class LoginPage implements OnInit, OnDestroy {
 
