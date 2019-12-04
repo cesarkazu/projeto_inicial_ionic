@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms'
 import { Router } from '@angular/router';
 
@@ -11,7 +11,7 @@ import { Autenticacao } from '../services/auth/autenticacao.service'
   templateUrl: './cadastro.page.html',
   styleUrls: ['./cadastro.page.scss']
 })
-export class CadastroPage implements OnInit, OnDestroy {
+export class CadastroPage {
 
   public formulario: FormGroup = new FormGroup({
     nome: new FormControl(null),
@@ -25,10 +25,8 @@ export class CadastroPage implements OnInit, OnDestroy {
     private router: Router
   ) { }
 
-  ngOnInit() {}
-
-  ngOnDestroy() {
-    this.formulario.reset()
+  ionViewDidLeave(){
+    this.formulario.reset();
   }
   
   public cadastrarUsuario(): void {
