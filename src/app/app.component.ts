@@ -18,22 +18,14 @@ export class AppComponent implements OnInit {
     {
       title: 'Home',
       url: '/home',
-      icon: 'home'
-    },
-    /* {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
-    }, */
-    {
-      title: 'Login',
-      url: '/login',
-      icon: ''
+      icon: 'home',
+      click: 'home'
     },
     {
-      title: 'Cadastro',
-      url: '/cadastro',
-      icon: ''
+      title: 'Sair',
+      url: '/',
+      icon: 'exit',
+      click: 'sair'
     }
   ];
 
@@ -54,13 +46,9 @@ export class AppComponent implements OnInit {
   }
 
   private subscription: Subscription
+  private logado: boolean = false
 
   ngOnInit(): void{
-    this.subscription = this.autenticacao.subject
-      .subscribe((res) => {
-        console.log('logou/deslogou',this.autenticacao.autenticado())
-      })
-
     var firebaseConfig = {
       apiKey: "AIzaSyAk12MhdPHNcvwi6pTzc0_aaH-38kjdIG4",
       authDomain: "flow-cbc81.firebaseapp.com",
@@ -72,6 +60,19 @@ export class AppComponent implements OnInit {
       measurementId: "G-QYNCHGMW1W"
     };
 
-    firebase.initializeApp(firebaseConfig)
+    firebase.initializeApp(firebaseConfig);
+
+    this.subscription = this.autenticacao.subject
+      .subscribe((res) => {
+        this.logado = this.autenticacao.autenticado();
+        console.log('logou/deslogou: ', this.logado);
+      })
+  }
+
+  public clickMenu(item: string): void{
+    //console.log(item)
+    if(item === 'sair'){
+      this.autenticacao.sair();
+    }
   }
 }

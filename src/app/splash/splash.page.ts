@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { timer } from 'rxjs';
 
@@ -7,13 +7,13 @@ import { timer } from 'rxjs';
   templateUrl: './splash.page.html',
   styleUrls: ['./splash.page.scss'],
 })
-export class SplashPage implements OnInit {
+export class SplashPage {
 
   constructor(
     private router: Router
   ) { }
 
-  ngOnInit() {
+  ionViewWillEnter(){
     const numbers = timer(1000);
     numbers.subscribe(x => this.router.navigate(['/login']));
   }

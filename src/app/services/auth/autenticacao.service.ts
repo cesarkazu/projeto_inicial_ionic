@@ -13,9 +13,9 @@ import { Usuario } from '../../model/usuario.model';
 @Injectable()
 export class Autenticacao{
 
-    public token_id: string
+    public token_id: string;
 
-    logado: boolean = false
+    logado: boolean = false;
 
     subject = new Subject<Object>();
 
@@ -34,12 +34,12 @@ export class Autenticacao{
             .then((resposta: any) => {
 
                 //remover a senha do atributo senha do objeto usuário
-                delete usuario.senha
+                delete usuario.senha;
 
                 //registrando dados complementares do usuário no path email na base64
                 firebase.database().ref(`usuario_detalhe/${btoa(usuario.email)}`)
-                    .set({ usuario })
-                this.router.navigate(['/login'])
+                    .set({ usuario });
+                this.router.navigate(['/login']);
             })
             .catch((erro: Error) => {
                 this.presentAlertConfirm(erro['code'], erro['message']);
@@ -52,10 +52,10 @@ export class Autenticacao{
         .then((resposta: any) => {
             firebase.auth().currentUser.getIdToken()
                 .then((idToken: string) => {
-                    this.token_id = idToken
-                    localStorage.setItem('idToken', idToken)
-                    this.subject.next()
-                    this.router.navigate(['/home'])
+                    this.token_id = idToken;
+                    localStorage.setItem('idToken', idToken);
+                    this.subject.next();
+                    this.router.navigate(['/home']);
                 })
         })
         .catch((erro: Error) => {
@@ -84,24 +84,24 @@ export class Autenticacao{
     public autenticado(): boolean{
         if(this.token_id === undefined
             && localStorage.getItem('idToken') != null){
-            this.token_id = localStorage.getItem('idToken')
+            this.token_id = localStorage.getItem('idToken');
         }
 
         if(this.token_id === undefined){
-            this.router.navigate(['/'])
+            this.router.navigate(['/']);
         }
         
-        return this.token_id !== undefined
+        return this.token_id !== undefined;
     }
 
     public sair(): void {
 
         firebase.auth().signOut()
             .then(() => {
-                localStorage.removeItem('idToken')
-                this.token_id = undefined
-                this.subject.next()
-                this.router.navigate(['/'])
+                localStorage.removeItem('idToken');
+                this.token_id = undefined;
+                this.subject.next();
+                this.router.navigate(['/']);
             })
     }
 }
