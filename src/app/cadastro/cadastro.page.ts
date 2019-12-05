@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms'
-import { Router } from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
 
 import { Usuario } from '../model/usuario.model'
 
@@ -21,8 +20,7 @@ export class CadastroPage {
   })
 
   constructor(
-    private autenticacao: Autenticacao,
-    private router: Router
+    private autenticacao: Autenticacao
   ) { }
 
   ionViewDidLeave(){

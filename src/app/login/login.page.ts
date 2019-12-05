@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms'
-import { AlertController } from '@ionic/angular';
+import { FormGroup, FormControl } from '@angular/forms';
 
 import { Autenticacao } from '../services/auth/autenticacao.service';
 
@@ -17,8 +16,7 @@ export class LoginPage {
   })
 
   constructor(
-    private autenticacao: Autenticacao,
-    public alertController: AlertController
+    private autenticacao: Autenticacao
   ) { }
 
   ionViewDidLeave(){
@@ -26,6 +24,7 @@ export class LoginPage {
   }
 
   public autenticar(): void{
+    //console.log(this.formulario)
     if(this.formulario.value.email
       && this.formulario.value.senha){
         this.autenticacao.autenticar(
