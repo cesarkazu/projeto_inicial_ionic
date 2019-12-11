@@ -21,9 +21,9 @@ export class LoginPage implements OnInit{
 
   ngOnInit(){}
 
-  /* ionViewDidLeave(){
+  ionViewDidLeave(){
     this.formulario.reset();
-  } */
+  }
 
   public autenticar(): void{
     //console.log(this.formulario)

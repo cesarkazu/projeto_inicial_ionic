@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 
+import { Bd } from '../services/bd.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -18,6 +20,7 @@ import { HomePage } from './home.page';
       }
     ])
   ],
+  providers: [ Bd ],
   declarations: [HomePage]
 })
 export class HomePageModule {}

@@ -51,8 +51,8 @@ export class AppComponent implements OnInit {
     });
   }
 
-  private subscription: Subscription
-  private logado: boolean = false
+  private subscription: Subscription;
+  private logado: boolean = this.autenticacao.autenticado();
 
   ngOnInit(): void{
     var firebaseConfig = {
