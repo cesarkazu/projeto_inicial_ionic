@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 import { Autenticacao } from '../services/auth/autenticacao.service';
@@ -8,7 +8,7 @@ import { Autenticacao } from '../services/auth/autenticacao.service';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss']
 })
-export class LoginPage {
+export class LoginPage implements OnInit{
 
   public formulario: FormGroup = new FormGroup({
     'email': new FormControl(null),
@@ -19,9 +19,11 @@ export class LoginPage {
     private autenticacao: Autenticacao
   ) { }
 
-  ionViewDidLeave(){
+  ngOnInit(){}
+
+  /* ionViewDidLeave(){
     this.formulario.reset();
-  }
+  } */
 
   public autenticar(): void{
     //console.log(this.formulario)

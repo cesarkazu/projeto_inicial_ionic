@@ -1,0 +1,47 @@
+<ion-content>
+  <ion-grid style="height: 100%">
+    <ion-row class="ion-align-items-center ion-justify-content-center" style="height:80%">
+      <ion-grid>
+        <form [formGroup]="formulario" (ngSubmit)="publicar()">
+          <ion-row><ion-col size="12">
+            <ion-input
+              type="text"
+              placeholder="Título"
+              formControlName="titulo"
+              autofocus
+            ></ion-input>
+          </ion-col></ion-row>
+          <ion-row><ion-col size="12">
+            <ion-textarea
+              type="text"
+              placeholder="Descrição"
+              formControlName="titulo"
+            >
+            </ion-textarea>
+            
+          </ion-col></ion-row>
+          <ion-row><ion-col size="12">
+            <ion-input
+              type="text"
+              placeholder="url"
+              formControlName="url"
+            ></ion-input>
+          </ion-col></ion-row>
+          <ion-row><ion-col size="12">
+            <ion-button
+              type="submit"
+              expand="full"
+              fill="clear"
+            >PUBLICAR</ion-button>
+          </ion-col></ion-row>
+        </form>
+        <ion-row class="ion-align-items-end ion-justify-content-center">
+          <span class="termo">By creating an account you agree to the Terms of use</span>
+        </ion-row>
+      </ion-grid>
+    </ion-row>
+    <ion-row class="ion-align-items-end ion-justify-content-center" style="height:15%">
+      <a class="login" routerLink="/login">Already have an account?</a>
+    </ion-row>
+  </ion-grid>
+</ion-content>

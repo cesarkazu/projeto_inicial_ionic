@@ -64,23 +64,6 @@ export class Autenticacao{
         })
     }
 
-    async presentAlertConfirm(header:string, message: string) {
-        const alert = await this.alertController.create({
-          header: header.toUpperCase(),
-          message: message,
-          buttons: [
-            {
-              text: 'Try again',
-              handler: () => {
-                //console.log('Confirm Okay');
-              }
-            }
-          ]
-        });
-    
-        await alert.present();
-      }
-
     public autenticado(): boolean{
         if(this.token_id === undefined
             && localStorage.getItem('idToken') != null){
@@ -103,5 +86,22 @@ export class Autenticacao{
                 this.subject.next();
                 this.router.navigate(['/']);
             })
+    }
+
+    async presentAlertConfirm(header:string, message: string) {
+        const alert = await this.alertController.create({
+          header: header.toUpperCase(),
+          message: message,
+          buttons: [
+            {
+              text: 'Try again',
+              handler: () => {
+                //console.log('Confirm Okay');
+              }
+            }
+          ]
+        });
+    
+        await alert.present();
     }
 }

@@ -22,6 +22,12 @@ export class AppComponent implements OnInit {
       click: 'home'
     },
     {
+      title: 'Postagem',
+      url: '/postagem',
+      icon: 'exit',
+      click: 'postagem'
+    },
+    {
       title: 'Sair',
       url: '/',
       icon: 'exit',
