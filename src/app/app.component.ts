@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import * as firebase from "firebase/app";
 
@@ -39,7 +40,8 @@ export class AppComponent implements OnInit {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private autenticacao: Autenticacao
+    private autenticacao: Autenticacao,
+    private router: Router
   ) {
     this.initializeApp();
   }
@@ -79,6 +81,9 @@ export class AppComponent implements OnInit {
     //console.log(item)
     if(item === 'sair'){
       this.autenticacao.sair();
+    }
+    else{
+      this.router.navigate([`/${item}`]);
     }
   }
 }
