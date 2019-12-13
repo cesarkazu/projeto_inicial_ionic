@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 import * as firebase from "firebase/app";
@@ -11,7 +11,7 @@ import { Bd } from '../services/bd.service';
   templateUrl: './postagem.page.html',
   styleUrls: ['./postagem.page.scss'],
 })
-export class PostagemPage implements OnInit {
+export class PostagemPage implements OnInit, OnDestroy {
 
   public email: string;
 
@@ -27,20 +27,30 @@ export class PostagemPage implements OnInit {
 
   ngOnInit(){
     firebase.auth().onAuthStateChanged((user) => {
-      this.email = user.email
+      if(user){
+        this.email = user.email;
+      }
     })
   }
+
+  ngOnDestroy(){}
 
   ionViewDidLeave(){
     this.formulario.reset();
   }
 
   public publicar(): void{
-    this.bd.publicar({
-      email: this.email,
-      titulo: this.formulario.value.titulo,
-      descricao: this.formulario.value.descricao,
-      url_img: this.formulario.value.url_img
-    })
+    //console.log(this.formulario)
+    if(this.email
+      && this.formulario.value.titulo
+      && this.formulario.value.descricao
+      && this.formulario.value.url_img){
+      this.bd.publicar({
+        email: this.email,
+        titulo: this.formulario.value.titulo,
+        descricao: this.formulario.value.descricao,
+        url_img: this.formulario.value.url_img
+      })
+    }
   }
 }

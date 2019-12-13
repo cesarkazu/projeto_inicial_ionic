@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+import { AutentificacaoGuard } from './services/auth/autentificacao-guard-service';
+
 const routes: Routes = [
   {
     path: '',
@@ -13,11 +15,13 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule),
+    canActivate: [ AutentificacaoGuard ]
   },
   {
     path: 'list',
-    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
+    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule),
+    canActivate: [ AutentificacaoGuard ]
   },
   {
     path: 'login',
@@ -29,7 +33,8 @@ const routes: Routes = [
   },
   {
     path: 'postagem',
-    loadChildren: () => import('./postagem/postagem.module').then( m => m.PostagemPageModule)
+    loadChildren: () => import('./postagem/postagem.module').then( m => m.PostagemPageModule),
+    canActivate: [ AutentificacaoGuard ]
   }
 
 ];

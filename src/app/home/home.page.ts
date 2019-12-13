@@ -21,10 +21,11 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     firebase.auth().onAuthStateChanged((user) => {
-      this.email = user.email;
-
-      this.atualizarTimeLine();
-    })
+      if(user){
+        this.email = user.email;
+        this.atualizarTimeLine();
+      }
+    });
   }
 
   public atualizarTimeLine(): void{

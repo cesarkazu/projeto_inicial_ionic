@@ -15,8 +15,6 @@ export class Autenticacao{
 
     public token_id: string;
 
-    logado: boolean = false;
-
     subject = new Subject<Object>();
 
     constructor(
@@ -65,6 +63,19 @@ export class Autenticacao{
     }
 
     public autenticado(): boolean{
+        if(this.token_id === undefined
+            && localStorage.getItem('idToken') != null){
+            this.token_id = localStorage.getItem('idToken');
+        }
+
+        if(this.token_id === undefined){
+            //this.router.navigate(['/']);
+        }
+        
+        return this.token_id !== undefined;
+    }
+
+    public autenticadoGuard(): boolean{
         if(this.token_id === undefined
             && localStorage.getItem('idToken') != null){
             this.token_id = localStorage.getItem('idToken');

@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 
-import { Usuario } from '../model/usuario.model'
-
 import { Autenticacao } from '../services/auth/autenticacao.service'
+
+import { Usuario } from '../model/usuario.model'
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.page.html',
   styleUrls: ['./cadastro.page.scss']
 })
-export class CadastroPage {
+export class CadastroPage implements OnInit, OnDestroy {
 
   public formulario: FormGroup = new FormGroup({
     nome: new FormControl(null),
@@ -20,8 +21,17 @@ export class CadastroPage {
   })
 
   constructor(
-    private autenticacao: Autenticacao
+    private autenticacao: Autenticacao,
+    private router: Router
   ) { }
+
+  ngOnInit(){
+    if(this.autenticacao.autenticado()){
+      this.router.navigate(['/home']);
+    }
+  }
+
+  ngOnDestroy(){}
 
   ionViewDidLeave(){
     this.formulario.reset();
