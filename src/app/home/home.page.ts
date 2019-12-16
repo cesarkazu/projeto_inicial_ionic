@@ -17,7 +17,7 @@ export class HomePage implements OnInit {
 
   constructor(
     private bd: Bd
-  ) {}
+  ){}
 
   ngOnInit() {
     firebase.auth().onAuthStateChanged((user) => {
@@ -32,6 +32,6 @@ export class HomePage implements OnInit {
     this.bd.consultaPublicacoes(this.email)
       .then((publicacoes: any) => {
         this.publicacoes = publicacoes;
-      })
+      });
   }
 }

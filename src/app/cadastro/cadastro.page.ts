@@ -2,9 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 
-import { Autenticacao } from '../services/auth/autenticacao.service'
+import { Autenticacao } from '../services/auth/autenticacao.service';
 
-import { Usuario } from '../model/usuario.model'
+import { Usuario } from '../model/usuario.model';
 
 @Component({
   selector: 'app-cadastro',
@@ -18,12 +18,12 @@ export class CadastroPage implements OnInit, OnDestroy {
     email: new FormControl(null),
     senha: new FormControl(null),
     csenha: new FormControl(null)
-  })
+  });
 
   constructor(
     private autenticacao: Autenticacao,
     private router: Router
-  ) { }
+  ){}
 
   ngOnInit(){
     if(this.autenticacao.autenticado()){
@@ -49,7 +49,7 @@ export class CadastroPage implements OnInit, OnDestroy {
         this.formulario.value.email,
         this.formulario.value.senha
       )
-      this.autenticacao.cadastrarUsuario(usuario)
+      this.autenticacao.cadastrarUsuario(usuario);
     }
   }
 }

@@ -14,12 +14,12 @@ export class LoginPage implements OnInit, OnDestroy{
   public formulario: FormGroup = new FormGroup({
     'email': new FormControl(null),
     'senha': new FormControl(null)
-  })
+  });
 
   constructor(
     private autenticacao: Autenticacao,
     private router: Router
-  ) { }
+  ){}
 
   ngOnInit(){
     if(this.autenticacao.autenticado()){
@@ -34,14 +34,13 @@ export class LoginPage implements OnInit, OnDestroy{
   }
 
   public autenticar(): void{
-    console.log('click');
     //console.log(this.formulario);
     if(this.formulario.value.email
       && this.formulario.value.senha){
       this.autenticacao.autenticar(
         this.formulario.value.email,
         this.formulario.value.senha
-      )
+      );
     }
   }
 }

@@ -19,11 +19,11 @@ export class PostagemPage implements OnInit, OnDestroy {
     titulo: new FormControl(null),
     descricao: new FormControl(null),
     url_img: new FormControl(null)
-  })
+  });
 
   constructor(
     private bd: Bd
-  ) { }
+  ){}
 
   ngOnInit(){
     firebase.auth().onAuthStateChanged((user) => {
@@ -50,7 +50,7 @@ export class PostagemPage implements OnInit, OnDestroy {
         titulo: this.formulario.value.titulo,
         descricao: this.formulario.value.descricao,
         url_img: this.formulario.value.url_img
-      })
+      });
     }
   }
 }

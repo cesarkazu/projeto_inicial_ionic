@@ -14,7 +14,7 @@ export class SplashPage implements OnInit{
   constructor(
     private autenticacao: Autenticacao,
     private router: Router
-  ) { }
+  ){}
 
   ngOnInit(){}
 
