@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 
+import { MenuController } from '@ionic/angular';
+
 import { Autenticacao } from '../services/auth/autenticacao.service';
 
 import { Usuario } from '../model/usuario.model';
@@ -22,7 +24,8 @@ export class CadastroPage implements OnInit, OnDestroy {
 
   constructor(
     private autenticacao: Autenticacao,
-    private router: Router
+    private router: Router,
+    public menuCtrl: MenuController
   ){}
 
   ngOnInit(){
@@ -32,6 +35,10 @@ export class CadastroPage implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){}
+
+  ionViewWillEnter(){
+    this.menuCtrl.enable(false);
+  }
 
   ionViewDidLeave(){
     this.formulario.reset();

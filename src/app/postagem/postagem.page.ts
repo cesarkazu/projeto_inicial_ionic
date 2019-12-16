@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
+import { MenuController } from '@ionic/angular';
+
 import * as firebase from "firebase/app";
 import "firebase/auth";
 
@@ -22,7 +24,8 @@ export class PostagemPage implements OnInit, OnDestroy {
   });
 
   constructor(
-    private bd: Bd
+    private bd: Bd,
+    public menuCtrl: MenuController
   ){}
 
   ngOnInit(){
@@ -34,6 +37,10 @@ export class PostagemPage implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){}
+
+  ionViewWillEnter(){
+    this.menuCtrl.enable(true);
+  }
 
   ionViewDidLeave(){
     this.formulario.reset();

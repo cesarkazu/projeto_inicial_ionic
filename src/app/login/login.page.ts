@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
+
 import { MenuController } from '@ionic/angular';
 
 import { Autenticacao } from '../services/auth/autenticacao.service';
@@ -31,7 +32,7 @@ export class LoginPage implements OnInit, OnDestroy{
 
   ngOnDestroy(){}
 
-  ionViewWillEnter() {
+  ionViewWillEnter(){
     this.menuCtrl.enable(false);
   }
 

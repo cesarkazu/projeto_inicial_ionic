@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { MenuController } from '@ionic/angular';
 
 import * as firebase from "firebase/app";
@@ -9,7 +10,7 @@ import { Bd } from '../services/bd.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  styleUrls: ['home.page.scss']
 })
 export class HomePage implements OnInit {
 
@@ -30,7 +31,7 @@ export class HomePage implements OnInit {
     });
   }
 
-  ionViewWillEnter() {
+  ionViewWillEnter(){
     this.menuCtrl.enable(true);
   }
 
