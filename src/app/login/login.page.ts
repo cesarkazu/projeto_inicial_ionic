@@ -34,7 +34,8 @@ export class LoginPage implements OnInit, OnDestroy{
   }
 
   public autenticar(): void{
-    //console.log(this.formulario)
+    console.log('click');
+    //console.log(this.formulario);
     if(this.formulario.value.email
       && this.formulario.value.senha){
       this.autenticacao.autenticar(

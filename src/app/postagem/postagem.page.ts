@@ -40,7 +40,7 @@ export class PostagemPage implements OnInit, OnDestroy {
   }
 
   public publicar(): void{
-    //console.log(this.formulario)
+    //console.log(this.formulario);
     if(this.email
       && this.formulario.value.titulo
       && this.formulario.value.descricao

@@ -38,7 +38,7 @@ export class CadastroPage implements OnInit, OnDestroy {
   }
   
   public cadastrarUsuario(): void {
-    //console.log(this.formulario)
+    //console.log(this.formulario);
     if(this.formulario.value.nome
       && this.formulario.value.email
       && this.formulario.value.senha
