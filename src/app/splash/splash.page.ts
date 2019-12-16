@@ -19,13 +19,12 @@ export class SplashPage implements OnInit{
   ngOnInit(){}
 
   ionViewDidEnter(){
+    const redirecionamento = timer(1000);
     if(this.autenticacao.autenticado()){
-      const numbers = timer(1000);
-      numbers.subscribe(x => this.router.navigate(['/home']));
+      redirecionamento.subscribe(x => this.router.navigate(['/home']));
     }
     else{
-      const numbers = timer(1000);
-      numbers.subscribe(x => this.router.navigate(['/login']));
+      redirecionamento.subscribe(x => this.router.navigate(['/login']));
     }
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 
 import * as firebase from "firebase/app";
 import "firebase/auth";
@@ -16,7 +17,8 @@ export class HomePage implements OnInit {
   public publicacoes: any
 
   constructor(
-    private bd: Bd
+    private bd: Bd,
+    public menuCtrl: MenuController
   ){}
 
   ngOnInit() {
@@ -26,6 +28,10 @@ export class HomePage implements OnInit {
         this.atualizarTimeLine();
       }
     });
+  }
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(true);
   }
 
   public atualizarTimeLine(): void{
